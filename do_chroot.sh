@@ -56,10 +56,17 @@ do_mount i-data
 
     set -x
 
-    # TODO: Bind von /dev Funktioniert nicht, siehe:
-    #           http://www.mikrocontroller.net/topic/240238?page=2#2450527
-    #~ mount -o bind /dev ${ROOT}dev
-    mount --rbind /dev ${ROOT}/dev
+    # FIXME: "mount -o bind /dev ${ROOT}dev" doesn't work. You will get:
+    #        mount: mounting /dev on /e-data/XXX/dev failed: Invalid argument
+    # see also:
+    #   http://whrl.pl/Rc1xZV (en)
+    #   http://www.mikrocontroller.net/topic/240238?page=2#2450527 (de)
+    #
+    # Used work-a-round from http://whrl.pl/Rc1AWq
+    # See also: http://www.mikrocontroller.net/topic/240238?goto=2458396#2458417 (de)
+    cp -R /dev ${ROOT}/
+
+    mount -t devpts devpts ${ROOT}/dev/pts
 
     mount -o bind /sys ${ROOT}/sys
     mount -t proc /proc ${ROOT}/proc
@@ -108,7 +115,8 @@ do_unmount() {
 
 (
     set -x
-    umount ${ROOT}/dev
+    #umount ${ROOT}/dev
+    umount ${ROOT}/dev/pts
     umount ${ROOT}/sys
     umount ${ROOT}/proc
 )
