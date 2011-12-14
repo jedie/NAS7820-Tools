@@ -1,0 +1,12 @@
+
+== Tools / Script around NAS 7820 ==
+
+Stuff for NAS Systems which using the ARM PLX-NAS7820 SoC.
+Especially the MEDION LIFE P89626 / P89630, see:
+
+ * http://www.mikrocontroller.net/articles/P89626
+
+Maybe also interesting for similar devices such as:
+
+ * [[http://archlinuxarm.org/platforms/armv6/pogoplug-provideov3|Pogoplug Pro/Video/v3]]
+ * [[http://iomega.nas-central.org/wiki/Category:Home_Media_CE|Iomega Home Media Network Hard Drive, Cloud Edition]]
