@@ -1,0 +1,33 @@
+
+== usb_key_func ==
+
+With the //usb_key_func// you can hack into the boot process in a very first stage.
+You must prepare a USB mass storage device with a **vFAT** filesystem and some special files on it.
+
+If must be **vFAT** because **rcS** used the mount option **iocharset=utf8** which only work on **vFAT**.
+
+On the Box the **/etc/init.d/rcS** script would be called **usb_key_func.sh** if some simple check success.
+
+More information:
+
+* http://zyxel.nas-central.org/wiki/Usb_key_func.sh (en)
+* http://www.mikrocontroller.net/articles/P89626/usb_key_func (de)
+
+
+Here you can find some prepared files for testing.
+
+
+== check filename ==
+
+The example file **STG212_check_file** is for the MEDION LIFE P89626/P89630 NAS.
+On other NAS System this file must be renamed, depending on the boxtype!
+You will find the name in the sources of the **/etc/init.d/rcS** script.
+
+Some examples:
+
+|= NAS System          |= check filename       |
+| MEDION P89626/P89630 | STG212_check_file     |
+| Zyxel NSA-220        | nsa220_check_file     |
+| Zyxel NSA-210        | nsa210_check_file     |
+| Zyxel NSA-221        | NSA221_check_file     |
+| Zyxel NSA-310 / 320  | nsa310_check_file_C0  |
