@@ -31,3 +31,39 @@ Some examples:
 | Zyxel NSA-210        | nsa210_check_file     |
 | Zyxel NSA-221        | NSA221_check_file     |
 | Zyxel NSA-310 / 320  | nsa310_check_file_C0  |
+
+
+== example output ==
+
+Here the output via [[http://www.mikrocontroller.net/articles/P89626/UART|UART]] with
+the example [[https://github.com/jedie/NAS7820-Tools/blob/master/usb_key_func/usb_key_func.sh|usb_key_func.sh]] file:
+
+{{{
+sda
+sdb
+checking sda
+Trying to mount /dev/sda1
+REISERFS warning (device sda1): super-6502 reiserfs_getopt: unknown mount option "iocharset=utf8"
+FAT: utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+checking sdb
+Trying to mount /dev/sdb1
+REISERFS warning (device sdb1): super-6502 reiserfs_getopt: unknown mount option "iocharset=utf8"
+FAT: utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+cp: '/mnt/parnerkey/usb_key_func.sh' and '/mnt/parnerkey/usb_key_func.sh' are the same file
+cmd = cat /etc/Zy_Private /mnt/parnerkey/usb_key_func.sh | md5sum -c /mnt/parnerkey/usb_key_func.md5 
+md5 check ok
+******************************
+Hello from usb_key_func.sh !!!
+******************************
+udhcpc (v1.17.2) started
+Sending discover...
+Sending select for 192.168.xxx.xxx...
+Lease of 192.168.xxx.xxx obtained, lease time 43200
+deleting routers
+route: SIOCDELRT: No such process
+adding dns 192.168.xxx.yyy
+OK, get IP via DHCP.
+OK, start telnet.
+
+Please press Enter to activate this console. 
+}}}
