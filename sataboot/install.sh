@@ -5,9 +5,8 @@
     exit 1
 }
 
-set -x
-
 dd if=/dev/zero of=$1 bs=512 count=65536
+dd if=mbr.bin of=$1 bs=512
 dd if=signature.bin of=$1 bs=512 seek=57080
 dd if=stage1.bin of=$1 bs=512 seek=34
 dd if=stage1.bin of=$1 bs=512 seek=57088
