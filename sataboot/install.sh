@@ -20,6 +20,6 @@ ubootvariant="1.1.2-WarheadsSE"
 dd if=/dev/zero of=$1 bs=512 count=65536
 dd if=mbr.bin of=$1 bs=512
 dd if=stage1.wrapped$stage1variant of=$1 bs=512 seek=34
-dd if=stage1.wrapped$stagevariant of=$1 bs=512 seek=57088
+dd if=stage1.wrapped$stage1variant of=$1 bs=512 seek=57088
 dd if=u-boot-$ubootvariant.wrapped of=$1 seek=154 bs=512
 dd if=u-boot-$ubootvariant.wrapped of=$1 seek=57208 bs=512
