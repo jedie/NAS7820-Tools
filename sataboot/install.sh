@@ -12,7 +12,7 @@ stage1variant=750
     stage1variant="$2"
 }
 
-ubootvariant="1.1.2-WarheadsSE"
+ubootvariant="1.1.2-sata"
 [ "x$3" != "x" ] && {
     ubootvariant="$3"
 }
