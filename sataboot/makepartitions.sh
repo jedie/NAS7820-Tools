@@ -1,6 +1,6 @@
 #!/bin/sh
 
-parted <<EOF
+./parted <<EOF
 mklabel gpt
 mkpart primary ext3 65536s 8323071s
 mkpart primary linux-swap 8323072s 9371647s
