@@ -1,7 +1,7 @@
 #!/bin/sh
 
 [ "x$1" == "x"] && {
-    echo "Usage: $0 hard-disk-device [stage1-variant] [u-boot-variant]"
+    echo "Usage: $0 hard-disk-device [[stage1-variant] u-boot-variant]"
     echo "Stage1 Variants: 700 750"
     echo "U-Boot Variants: 1.1.2-WarheadsSE 1.1.2-sata"
     exit 1
