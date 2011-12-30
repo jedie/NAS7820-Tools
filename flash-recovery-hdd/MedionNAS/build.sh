@@ -137,7 +137,7 @@ dd if=mtd7.backup of=$device bs=512 seek=50688 bs=512 conv=notrunc status=noxfer
 rm mtd3.data mtd3.crc mtd3.bin cksum.data
 
 echo "Generate SATA U-Boot Environment"
-echo -en "bootcmd=run select0 erase_nand mtd1 mtd2 mtd3 mtd4 mtd6 mtd7\0" >env.data
+echo -en "bootcmd=run select0 erase_nand mtd1 mtd2 mtd3 mtd4 mtd6 mtd7 clear_mbr\0" >env.data
 echo -en "bootdelay=2\0" >>env.data
 echo -en "baudrate=115200\0" >>env.data
 echo -en "ipaddr=192.168.50.100\0" >>env.data
@@ -167,6 +167,7 @@ echo -en "flash_mtd3=nand write 61000000 3C0000 80000\0" >>env.data
 echo -en "flash_mtd4=nand write 61000000 440000 a00000\0" >>env.data
 echo -en "flash_mtd6=nand write 61000000 1840000 a00000\0" >>env.data
 echo -en "flash_mtd7=nand write 61000000 2240000 5dc0000\0" >>env.data
+echo -en "clear_mbr=ide write 0x60000000 0 1\0" >>env.data
 echo -en "MODEL_ID=AB03\0" >>env.data
 echo -en "PRODUCT_NAME=STG-212\0" >>env.data
 echo -en "VENDOR_NAME=MitraStar Technology Corp.\0" >>env.data
