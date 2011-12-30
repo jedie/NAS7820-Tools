@@ -12,5 +12,5 @@ rm 2
 quit
 EOF
 
-exit 0
+exit 1
 

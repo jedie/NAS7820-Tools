@@ -10,5 +10,5 @@ echo "*****************************************************"
 cp /sysdisk.img /sysdisk
 /bin/umount /sysdisk
 
-exit 0
+exit 1
 
