@@ -1,0 +1,5 @@
+./build.sh <device> <MAC-Address>
+
+MAC-Address must be formated according to this xx:xx:xx:xx:xx:xx
+
+The MAC address should be the same as printed on the device originally.
