@@ -1,0 +1,20 @@
+
+== usb_key_func ==
+
+With the //usb_key_func// you can hack into the boot process in a very first stage.
+You must prepare a USB mass storage device with a **vFAT** filesystem and some special files on it.
+
+If must be **vFAT** because **rcS** used the mount option **iocharset=utf8** which only work on **vFAT**.
+
+On the Box the **/etc/init.d/rcS** script would be called **usb_key_func.sh** if some simple check success.
+
+More information:
+
+* http://zyxel.nas-central.org/wiki/Usb_key_func.sh (en)
+* http://www.mikrocontroller.net/articles/P89626/usb_key_func (de)
+
+This set of files is for the Medion Life NAS with original firmware.
+
+This script will re-install a sysdisk.img backup file.
+
+
