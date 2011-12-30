@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Here is a examle do script
 # We try to get a IP via DHCP and start telnet
 # If something wring, we continue the boot process by 'exit 1'
