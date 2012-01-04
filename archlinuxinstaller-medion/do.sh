@@ -33,9 +33,13 @@ mke2fs -j "$disk"1
 mkdir /install
 mount -t ext3 "$disk"1 /install
 cd /install
-wget http://archlinuxarm.org/os/ArchLinuxARM-oxnas-latest.tar.gz
-tar xfvz ArchLinuxARM-oxnas-latest.tar.gz
-rm ArchLinuxARM-oxnas-latest.tar.gz
+if [ ! -f /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz ] ; then
+    wget http://archlinuxarm.org/os/ArchLinuxARM-oxnas-latest.tar.gz
+    tar xfvz ArchLinuxARM-oxnas-latest.tar.gz
+    rm ArchLinuxARM-oxnas-latest.tar.gz
+else
+    tar xfvz /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz
+fi
 /sbin/ifconfig egiga0 | grep ether | awk "{ print \$2 }" >usr/local/mac_addr
 umount /dev/sda1
 
