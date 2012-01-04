@@ -29,9 +29,9 @@ quit
 EOF
 # Restore special MBR of PLX
 dd if=mbr.bin of=$disk count=446 bs=1
-mke2fs -j "$disk"1
+mke2fs -j "$disk"2
 mkdir /install
-mount -t ext3 "$disk"1 /install
+mount -t ext3 "$disk"2 /install
 cd /install
 if [ ! -f /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz ] ; then
     wget http://archlinuxarm.org/os/ArchLinuxARM-oxnas-latest.tar.gz
@@ -41,6 +41,6 @@ else
     tar xfvz /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz
 fi
 /sbin/ifconfig egiga0 | grep ether | awk "{ print \$2 }" >usr/local/mac_addr
-umount /dev/sda1
+umount "$disk"2
 
 reboot
