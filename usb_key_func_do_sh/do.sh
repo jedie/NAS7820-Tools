@@ -5,6 +5,19 @@
 # If something wring, we continue the boot process by 'exit 1'
 # You should see something via 'dmesg'
 
+echo "Mount disk to get the regular system available"
+DISK_PATH="/zyxel/mnt/sysdisk"
+
+/bin/mkdir -p ${DISK_PATH}
+IMG_PATH="/ram_bin"
+/bin/mount -t ext2 -o loop,ro ${DISK_PATH}/sysdisk.img ${IMG_PATH} || exit 0
+
+# Mount some read-only directories and make everything available for us
+/bin/mount --bind ${IMG_PATH}/usr /usr
+/bin/mount --bind ${IMG_PATH}/lib/security /lib/security
+/bin/mount --bind ${IMG_PATH}/lib/modules /lib/modules
+cp -a ${IMG_PATH}/bin/* /bin/
+cp -a ${IMG_PATH}/sbin/* /sbin/
 
 echo "******************************"
 echo "Hello from do.sh !!!"
