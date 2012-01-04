@@ -36,7 +36,7 @@ cd /install
 wget http://archlinuxarm.org/os/ArchLinuxARM-oxnas-latest.tar.gz
 tar xfvz ArchLinuxARM-oxnas-latest.tar.gz
 rm ArchLinuxARM-oxnas-latest.tar.gz
-/sbin/ifconfig egiga0 | grep ether | awk "{ print \$2 }" >/usr/local/mac_addr
+/sbin/ifconfig egiga0 | grep ether | awk "{ print \$2 }" >usr/local/mac_addr
 umount /dev/sda1
 
 reboot
