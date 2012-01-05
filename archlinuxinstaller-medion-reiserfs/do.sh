@@ -40,11 +40,13 @@ mkpart primary linux-swap 65536s 1114111s
 mkpart primary ext3 1114112s -1s
 quit
 EOF
-mke2fs -j "$disk"2 || exit 0
+mkreiserfs -q "$disk"2 || exit 0
 mkdir /install || exit 0
-mount -t ext3 "$disk"2 /install || exit 0
+mount -t reiserfs "$disk"2 /install || exit 0
 echo "Installing ArchLinuxARM rootfs"
 cd /install
+cp /bin/tar /install
+
 if [ ! -f /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz ] ; then
     echo "Downloading ArchLinuxARM rootfs"
     wget http://archlinuxarm.org/os/ArchLinuxARM-oxnas-latest.tar.gz || exit 0
@@ -56,12 +58,13 @@ else
     tar xvzf /mnt/parnerkey/ArchLinuxARM-oxnas-latest.tar.gz || exit 0
 fi
 echo "Extracting MAC address"
-/sbin/ifconfig egiga0 | grep HWaddr | awk "{ print \$5 }" >usr/local/mac_addrcat /usr/local/mac_addr
+/sbin/ifconfig egiga0 | grep HWaddr | awk "{ print \$5 }" >usr/local/mac_addr
 cat /usr/local/mac_addr
 cd /
 umount "$disk"2 || exit 0
-cd /mnt/parnerkey
+
 # Restore special MBR of PLX
+cd /mnt/parnerkey
 dd if=mbr.bin of=$disk count=446 bs=1
 
 reboot
