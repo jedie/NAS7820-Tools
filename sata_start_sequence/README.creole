@@ -1,0 +1,19 @@
+
+== SATA boot ==
+
+The [[http://www.mikrocontroller.net/articles/P89626|Medion P89626 NAS]] and the [[http://iomega.nas-central.org/wiki/Stock_Configuration_%28Home_Media_CE%29|Iomega Home Media Network Hard Drive, Cloud Edition]] can boot directly from SATA Harddisk.
+
+The stage1 from flash reads the first sector of the harddisk and if a "start sequence" found, it will load stage1 from disk (which than loads uboot/uboot env and the kernel from disk).
+
+The "start sequence" are the first 444Bytes on the disk.
+The first 420Bytes are only NULL strings. After this comes this Bytes:
+{{{
+    \x00\x5f\x01\x00
+    \x00\xdf\x00\x00
+    \x00\x80\x00\x00
+    \x22\x80\x00\x00
+    \x22\x00\x00\x00
+    \x00\x80\x00\x00
+}}}
+
+There some script to create this sequence.
